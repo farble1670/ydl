@@ -1,0 +1,42 @@
+buildscript {
+  repositories {
+    mavenLocal()
+    jcenter()
+  }
+  dependencies {
+    classpath 'com.android.tools.build:gradle:0.13.0'
+  }
+}
+apply plugin: 'com.android.application'
+
+repositories {
+  jcenter()
+}
+
+android {
+  compileSdkVersion 19
+  buildToolsVersion "21.1.2"
+
+  defaultConfig {
+    applicationId "org.jtb.vdl"
+    minSdkVersion 16
+    targetSdkVersion 16
+    versionCode 1
+    versionName "1.0"
+  }
+  buildTypes {
+    release {
+      runProguard false
+      proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+    }
+  }
+  packagingOptions {
+    exclude 'META-INF/LICENSE.txt'
+    exclude 'META-INF/DEPENDENCIES'
+    exclude 'META-INF/NOTICE.txt'
+  }
+}
+
+dependencies {
+  compile fileTree(dir: 'libs', include: ['*.jar'], exclude: 'xmlpull')
+}
